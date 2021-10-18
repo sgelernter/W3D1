@@ -1,5 +1,5 @@
 
-require "byebug"
+#require "byebug"
 class Array 
 
     def my_each(&prc)
