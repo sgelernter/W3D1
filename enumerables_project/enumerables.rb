@@ -63,8 +63,4 @@ class Array
         flattened
     end
 
-    #[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
 end
-
- p [1,2,[3]].my_flatten
- p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten
