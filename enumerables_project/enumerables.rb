@@ -45,26 +45,71 @@ class Array
 
     def my_flatten
 
-        #return [ele] if !ele.is_a?(Array)
-        #[1,2,[3]]
         flattened = []
         self.each.with_index do |ele, i|
-          
             if !ele.is_a?(Array)
                 flattened << ele  
             else   
-                  #debugger
                 flattened += ele.my_flatten
             end
-
         end
-
-
         flattened
     end
 
-    #[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+    def my_zip(*args)
+        zip_size = args.length + 1
+        matrix = Array.new(self.length) {Array.new(zip_size, nil)}
+        args.unshift(self)
+
+        args.each.with_index do |row, i|
+            row.each.with_index do |ele, j|
+                matrix[j][i] = ele
+            end
+        end
+        matrix
+    end
+
+    def my_rotate(num = 1)
+        if num > 0
+            num.times do 
+                back = self.shift
+                self.push(back)
+            end
+        else
+            (num * -1).times do
+                front = self.pop
+                self.unshift(front)
+            end
+        end
+        self
+    end
+
+    def my_join(str = "")
+        joined = ""
+        self.each { |ele| joined += "#{ele}#{str}" }
+        if str != ""
+            return joined[0...-1]
+        else
+            return joined
+        end
+
+    end
+
+    def my_reverse
+        reversed = []
+
+        (1..self.length).each do |i|
+            reversed << self[-i]
+        end
+
+        reversed
+    end
+
 end
 
- p [1,2,[3]].my_flatten
- p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten
+# p a = [ "a", "b", "c", "d" ]
+# p a.my_join         # => "abcd"
+# p a.my_join("$")    # => "a$b$c$d"
+
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
