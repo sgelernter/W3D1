@@ -17,4 +17,6 @@ class Array
         results_array
     end
 
+    p "Hello Worlf"
+
 end
