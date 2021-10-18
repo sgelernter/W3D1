@@ -84,5 +84,48 @@ class Array
         self
     end
 
+    def my_join(str = "")
+        joined = ""
+        self.each { |ele| joined += "#{ele}#{str}" }
+        if str != ""
+            return joined[0...-1]
+        else
+            return joined
+        end
+    end
+
+    def my_reverse
+        reversed = []
+        (1..self.length).each do |i|
+            reversed << self[-i]
+        end
+        reversed
+    end
+
+    def factors(num)
+        result = []
+        (1..num).each do |i|
+            if num % i == 0
+                result << i
+            end
+        end
+        result
+    end
+
+    def bubble_sort(&prc)
+        sorted = false
+        while !sorted 
+            sorted = true 
+            (0...self.length - 1).each do |i|
+                if prc.call(self[i]) > prc.call(self[i+1])
+                    self[i], self[i + 1] = self[i + 1], self[i]
+                    sorted = false
+                end
+            end
+        end
+        self
+    end
+
 end
+
 
