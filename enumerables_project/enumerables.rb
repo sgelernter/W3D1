@@ -45,22 +45,44 @@ class Array
 
     def my_flatten
 
-        #return [ele] if !ele.is_a?(Array)
-        #[1,2,[3]]
         flattened = []
         self.each.with_index do |ele, i|
-          
             if !ele.is_a?(Array)
                 flattened << ele  
             else   
-                  #debugger
                 flattened += ele.my_flatten
             end
-
         end
-
-
         flattened
     end
 
+    def my_zip(*args)
+        zip_size = args.length + 1
+        matrix = Array.new(self.length) {Array.new(zip_size, nil)}
+        args.unshift(self)
+
+        args.each.with_index do |row, i|
+            row.each.with_index do |ele, j|
+                matrix[j][i] = ele
+            end
+        end
+        matrix
+    end
+
+    def my_rotate(num = 1)
+        if num > 0
+            num.times do 
+                back = self.shift
+                self.push(back)
+            end
+        else
+            (num * -1).times do
+                front = self.pop
+                self.unshift(front)
+            end
+        end
+        self
+    end
+
 end
+
