@@ -1,5 +1,5 @@
 
-require "byebug"
+#require "byebug"
 class Array 
 
     def my_each(&prc)
@@ -92,10 +92,15 @@ class Array
         else
             return joined
         end
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b066bed7f317147e72c12d9c72256779651b99a
     end
 
     def my_reverse
         reversed = []
+<<<<<<< HEAD
         (1..self.length).each do |i|
             reversed << self[-i]
         end
@@ -124,8 +129,25 @@ class Array
             end
         end
         self
+=======
+
+        (1..self.length).each do |i|
+            reversed << self[-i]
+        end
+
+        reversed
+>>>>>>> 8b066bed7f317147e72c12d9c72256779651b99a
     end
 
 end
 
+<<<<<<< HEAD
 
+=======
+# p a = [ "a", "b", "c", "d" ]
+# p a.my_join         # => "abcd"
+# p a.my_join("$")    # => "a$b$c$d"
+
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
+>>>>>>> 8b066bed7f317147e72c12d9c72256779651b99a
